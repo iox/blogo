@@ -21,7 +21,7 @@ module Blogo::Admin
       if service.create!
         @post = service.post
         flash[:notice] = I18n.translate('blogo.admin.post_created')
-        redirect_to blogo_admin_posts_path
+        redirect_to main_app.blogo_admin_posts_path
       else
         @post = service.post
         render 'new'
@@ -42,7 +42,7 @@ module Blogo::Admin
 
       if service.update!
         flash[:notice] = I18n.translate('blogo.admin.post_updated')
-        redirect_to blogo_admin_posts_path
+        redirect_to main_app.blogo_admin_posts_path
       else
         render 'edit'
       end
@@ -55,7 +55,7 @@ module Blogo::Admin
       Blogo::DestroyPostService.new(post).destroy!
 
       flash[:notice] = I18n.translate('blogo.admin.post_removed')
-      redirect_to blogo_admin_posts_path
+      redirect_to main_app.blogo_admin_posts_path
     end
 
     # POST /admin/posts/preview
